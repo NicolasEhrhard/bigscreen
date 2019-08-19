@@ -1,0 +1,42 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateAnswerTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('answer', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('value');
+            $table->unsignedInteger('question_id')->nullable();
+            $table->foreign('question_id')->references('id')->on('question');
+            $table->unsignedInteger('survey_id')->nullable();
+            $table->foreign('survey_id')->references('id')->on('survey');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::table('answer', function (Blueprint $table) {
+            $table->dropForeign('answer_question_id_foreign');
+            $table->dropColumn('question_id');
+            $table->dropForeign('answer_survey_id_foreign');
+            $table->dropColumn('survey_id');
+        });
+        Schema::dropIfExists('answer');
+    }
+}
