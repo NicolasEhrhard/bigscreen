@@ -13,13 +13,13 @@ class CreateAnswerTable extends Migration
      */
     public function up()
     {
-        Schema::create('answer', function (Blueprint $table) {
+        Schema::create('answers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('value');
             $table->unsignedInteger('question_id')->nullable();
-            $table->foreign('question_id')->references('id')->on('question');
+            $table->foreign('question_id')->references('id')->on('questions');
             $table->unsignedInteger('survey_id')->nullable();
-            $table->foreign('survey_id')->references('id')->on('survey');
+            $table->foreign('survey_id')->references('id')->on('surveys');
             $table->timestamps();
         });
     }
@@ -31,12 +31,12 @@ class CreateAnswerTable extends Migration
      */
     public function down()
     {
-        Schema::table('answer', function (Blueprint $table) {
+        Schema::table('answers', function (Blueprint $table) {
             $table->dropForeign('answer_question_id_foreign');
             $table->dropColumn('question_id');
             $table->dropForeign('answer_survey_id_foreign');
             $table->dropColumn('survey_id');
         });
-        Schema::dropIfExists('answer');
+        Schema::dropIfExists('answers');
     }
 }

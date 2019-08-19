@@ -7,7 +7,7 @@ class SurveySeeder  extends Seeder
 {
     public function run()
     {
-        DB::table('survey')->insert([
+        DB::table('surveys')->insert([
             'email' => 'admin@bigscreen.fr',
             'lien' => Hash::make('admin@bigscreen.fr'),
         ]);
