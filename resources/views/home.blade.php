@@ -1,55 +1,91 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-    <title>Bigscreen</title>
+<?php
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+?>
 
-</head>
-<body>
-<div class="position-ref full-height">
+@section('content')
+    <div class="container">
 
-    <form>
-        @foreach($questions as $question)
-            <div class="form-group">
-                <label for="exampleInputEmail1">Question {{$question->number}}/{{$questions->count()}}
-                    <br>{{$question->title}}</label>
-                @if($question->questionType == 'saisie')
-                    <input type="text" class="form-control" id="exampleInputEmail1">
-                @endif
-                @if($question->questionType == 'numeric')
-                    <select class="form-control" id="exampleFormControlSelect1">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
-                @endif
-                @if($question->questionType == 'choice')
-                    <h1>{{json_decode($question->choice[0])}}</h1>
-                @endif
+        @if(Session::has('message'))
+            <div class="alert">
+                <p>{{Session::get('message')}}</p>
             </div>
+        @endif
 
-        @endforeach
-    </form>
+        @if(Session::has('success'))
+            <div id="modal-close-default" uk-modal>
+                <div class="uk-modal-dialog uk-modal-body">
+                    <button class="uk-modal-close-default" type="button" uk-close></button>
+                    <h2 class="uk-modal-title">MERCI !</h2>
+                    <h4>Ci-dessous le lien vers votre sondage</h4>
+                    <p href="{{Session::get('success')}}" target="_blank">{{Session::get('success')}}</p>
+                </div>
+            </div>
+            <div class="alert">
+                <p>{{Session::get('success')}}</p>
+            </div>
+        @endif
 
-</div>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-</body>
-</html>
+        <div class="row justify-content-center">
+            <div class="position-ref full-height">
+                <form action="{{ action('AnswerController@store') }}" method="post">
+                    {{csrf_field()}}
+                    <fieldset class="uk-fieldset">
+
+                        @foreach($questions as $question)
+                            <div class="form-group">
+                                <label for="{{$question->title}}"><strong> Question {{$question->number}}
+                                        /{{$questions->count()}} </strong>
+                                    <br>{{$question->title}}</label>
+                                @if($question->questionType == 'saisie')
+                                    @if($question->title == 'Votre adresse mail')
+                                        <input required name="email" value="{{old('email')}}" type="email"
+                                               class="form-control"
+                                               id="{{$question->title}}">
+                                    @else
+                                        <input name="{{$question->title}}" value="{{old($question->title)}}" type="text"
+                                               class="form-control"
+                                               id="{{$question->title}}">
+                                    @endif
+
+                                @endif
+                                @if($question->questionType == 'numeric')
+                                    <div class="uk-form-controls">
+                                        <label><input class="uk-radio" type="radio" name="radio1">1</label>
+                                        <label><input class="uk-radio" type="radio" name="radio1">2</label>
+                                        <label><input class="uk-radio" type="radio" name="radio1">3</label>
+                                        <label><input class="uk-radio" type="radio" name="radio1">4</label>
+                                        <label><input class="uk-radio" type="radio" name="radio1">5</label>
+                                    </div>
+                                @endif
+                                @if($question->questionType == 'choice')
+                                    <div class="uk-form-controls">
+                                        <select name="{{$question->title}}"
+                                                class="uk-select"
+                                                id="form-stacked-select">
+                                            @foreach($question->getChoices() as $choice)
+                                                <option value="{{$choice}}">{{$choice}}</option>
+                                            @endforeach
+                                        </select>
+                                        @if($question->checkSelectedChoice())
+                                            <h1>AUTrE OKKKKKK</h1>
+                                        @endif
+                                    </div>
+                                @endif
+                            </div>
+
+                        @endforeach
+
+                        <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary">ENVOYER !</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+@endsection

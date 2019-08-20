@@ -3,14 +3,14 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
-class SurveySeeder  extends Seeder
+class UserSeeder extends Seeder
 {
     public function run()
     {
-        DB::table('surveys')->insert([
+        DB::table('users')->insert([
+            'name' => 'admin',
             'email' => 'admin@bigscreen.fr',
-            'lien' => Hash::make('admin@bigscreen.fr'),
+            'password' => Hash::make('admin'),
         ]);
     }
-
 }

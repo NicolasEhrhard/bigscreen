@@ -114,14 +114,16 @@ class QuestionSeeder extends Seeder
             [
                 'number' => 18,
                 'title' => "Aimeriez-vous pouvoir enregistrer des émissions TV pour pouvoir les regarder ultérieurement ?",
-                'questionType' => 'numeric',
+                'questionType' => 'choice',
+                'choice' => json_encode(['Oui', 'Non'])
             ]
         );
         DB::table('questions')->insert(
             [
                 'number' => 19,
                 'title' => "Aimeriez-vous jouer à des jeux exclusifs sur votre Bigscreen ?",
-                'questionType' => 'numeric',
+                'questionType' => 'choice',
+                'choice' => json_encode(['Oui', 'Non'])
             ]
         );
         DB::table('questions')->insert(

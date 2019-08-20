@@ -11,5 +11,12 @@
 |
 */
 
-Route::get('/','FrontController@index');
+Auth::routes();
 
+Route::get('/','HomeController@index');
+
+Route::get('/home', 'HomeController@index');
+Route::get('/administration', 'AdminController@index');
+Route::get('sondage/{lien}', 'HomeController@sondage');
+
+Route::post('answerStore', 'AnswerController@store');

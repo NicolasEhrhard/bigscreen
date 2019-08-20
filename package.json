@@ -23,6 +23,8 @@
         "vue": "^2.5.17"
     },
     "dependencies": {
+        "primeicons": "^2.0.0",
+        "primeng": "^8.0.2",
         "survey-jquery": "^1.1.5"
     }
 }
