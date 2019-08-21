@@ -11,6 +11,8 @@ class UserSeeder extends Seeder
             'name' => 'admin',
             'email' => 'admin@bigscreen.fr',
             'password' => Hash::make('admin'),
+            'lien' => 'admin',
+            'role'=>'administrateur'
         ]);
     }
 }

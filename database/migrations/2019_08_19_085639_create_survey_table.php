@@ -15,11 +15,14 @@ class CreateSurveyTable extends Migration
     {
         Schema::create('surveys', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('email');
-            $table->string('lien');
+            $table->string('name');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
+
+
 
     /**
      * Reverse the migrations.
@@ -28,6 +31,10 @@ class CreateSurveyTable extends Migration
      */
     public function down()
     {
+        Schema::table('surveys', function (Blueprint $table) {
+            $table->dropForeign('surveys_user_id_foreign');
+            $table->dropColumn('user_id');
+        });
         Schema::dropIfExists('surveys');
     }
 }

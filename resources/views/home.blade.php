@@ -45,24 +45,24 @@
                                                class="form-control"
                                                id="{{$question->title}}">
                                     @else
-                                        <input name="{{$question->title}}" value="{{old($question->title)}}" type="text"
+                                        <input required name="{{$question->id}}" value="{{old($question->title)}}" type="text"
                                                class="form-control"
                                                id="{{$question->title}}">
                                     @endif
 
                                 @endif
                                 @if($question->questionType == 'numeric')
-                                    <div class="uk-form-controls">
-                                        <label><input class="uk-radio" type="radio" name="radio1">1</label>
-                                        <label><input class="uk-radio" type="radio" name="radio1">2</label>
-                                        <label><input class="uk-radio" type="radio" name="radio1">3</label>
-                                        <label><input class="uk-radio" type="radio" name="radio1">4</label>
-                                        <label><input class="uk-radio" type="radio" name="radio1">5</label>
+                                    <div required class="uk-form-controls">
+                                        <label><input class="uk-radio" type="radio" name="{{$question->id}}">1</label>
+                                        <label><input class="uk-radio" type="radio" name="{{$question->id}}">2</label>
+                                        <label><input class="uk-radio" type="radio" name="{{$question->id}}">3</label>
+                                        <label><input class="uk-radio" type="radio" name="{{$question->id}}">4</label>
+                                        <label><input class="uk-radio" type="radio" name="{{$question->id}}">5</label>
                                     </div>
                                 @endif
                                 @if($question->questionType == 'choice')
                                     <div class="uk-form-controls">
-                                        <select name="{{$question->title}}"
+                                        <select required name="{{$question->id}}"
                                                 class="uk-select"
                                                 id="form-stacked-select">
                                             @foreach($question->getChoices() as $choice)

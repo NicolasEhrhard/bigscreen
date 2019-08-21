@@ -3,7 +3,27 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+
+trait BigScreenAuthenticates
+{
+    use AuthenticatesUsers {
+        AuthenticatesUsers::validateLogin as bigScreenValidateLogin;
+    }
+
+    public function bigScreenLogin(Request $request) {
+        $this->bigScreenValidateLogin();
+
+        User::where('email',$this->username())->first();
+
+        $request->validate([
+            $this->username() => 'required|string',
+            'password' => 'required|string',
+        ]);
+    }
+}
 
 class LoginController extends Controller
 {
@@ -18,7 +38,7 @@ class LoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers;
+    use BigScreenAuthenticates;
 
     /**
      * Where to redirect users after login.

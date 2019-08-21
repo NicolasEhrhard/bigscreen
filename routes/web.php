@@ -17,6 +17,6 @@ Route::get('/','HomeController@index');
 
 Route::get('/home', 'HomeController@index');
 Route::get('/administration', 'AdminController@index');
-Route::get('sondage/{lien}', 'HomeController@sondage');
+Route::get('/{lien}', 'HomeController@sondages');
 
 Route::post('answerStore', 'AnswerController@store');

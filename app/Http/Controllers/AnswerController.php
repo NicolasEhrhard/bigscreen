@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Answer;
 use App\Survey;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -12,17 +14,45 @@ class AnswerController extends Controller
     {
     }
 
-    public function store(Request $request)
-    {
-        $survey = Survey::where('email',$request->email)->first();
-        if (!$survey){
-            $survey =Survey::create([
-                'email'=>$request->email,
-                'lien' => $request->root()."/". Hash::make($request->email)
-            ]);
+    function generateRandomString($length = 20) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
         }
-        return redirect('home')->with('success', $survey->lien);
+        return $randomString;
     }
 
+    public function store(Request $request)
+    {
+        $user = User::where('email', $request->email)->first();
+        if (!$user) {
+            $user = User::create([
+                'email' => $request->email,
+                'name' => explode("@",$request->email)[0],
+                'password' =>  Hash::make(explode("@",$request->email)[0]),
+                'lien' => $this->generateRandomString(),
+            ]);
+        }
+        $newSurvey= new Survey();
+        $newSurvey->name = "Sondage VR";
+        $newSurvey->user_id = $user->id;
+        $user->surveys()->save($newSurvey);
+
+        foreach ($request->all() as $key => $value) {
+            if ($key == "_token" || $key == "email"){
+            }else{
+                Answer::create([
+                    'question_id'=>$key,
+                    'value'=> $value,
+                    'survey_id'=>$newSurvey->id,
+                ]);
+                //print_r($key.' : ' . $value);
+            }
+        };
+
+        return redirect('home')->with('success', $user->lien);
+    }
 
 }
