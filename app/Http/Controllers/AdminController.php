@@ -20,11 +20,17 @@ class AdminController extends Controller
 
     public function questionnaires()
     {
+        if (Auth::user()->role != 'administrateur'){
+            return redirect('home')->with('message',"VOUS N'ETES PAS AUTORISE A ACCEDER A L'ADMINISTRATION DE CE SITE !");
+        }
         return view('admin/questionnaires');
     }
 
     public function reponses()
     {
+        if (Auth::user()->role != 'administrateur'){
+            return redirect('home')->with('message',"VOUS N'ETES PAS AUTORISE A ACCEDER A L'ADMINISTRATION DE CE SITE !");
+        }
         return view('admin/reponses');
     }
 

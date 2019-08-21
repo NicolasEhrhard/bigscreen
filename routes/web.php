@@ -16,11 +16,13 @@ Auth::routes();
 Route::get('/','HomeController@index');
 
 Route::get('/home', 'HomeController@index');
-Route::get('/{lien}', 'HomeController@sondages');
-
-Route::post('answerStore', 'AnswerController@store');
-
 Route::get('/administration', 'AdminController@index');
 Route::get('/administration/questionnaires', 'AdminController@questionnaires');
 Route::get('/administration/reponses', 'AdminController@reponses');
+Route::get('/{lien}', 'HomeController@sondages');
+
+
+Route::post('answerStore', 'AnswerController@store');
+
+
 

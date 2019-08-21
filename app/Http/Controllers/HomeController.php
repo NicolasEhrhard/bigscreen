@@ -25,7 +25,6 @@ class HomeController extends Controller
     {
         $user = User::where('lien',$lien)->with('surveys')->first();
         if (!$user) return redirect('home')->with('message', 'ERREUR DE LIEN !');
-        //$answers = Answer::where('survey_id', $user->id);
         return view('sondage',['surveys'=>$user->surveys]);
     }
 
