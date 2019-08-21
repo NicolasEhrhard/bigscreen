@@ -9,7 +9,8 @@ class Question extends Model
     protected $lastChoiceSelected = '';
     public function scopeGetChoices()
     {
-        return json_decode($this->choice);
+        return unserialize($this->choice);
+        //return json_decode($this->choice);
     }
 
     public function scopeChoiceChange(){

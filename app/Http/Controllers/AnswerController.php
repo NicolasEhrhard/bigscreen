@@ -48,7 +48,6 @@ class AnswerController extends Controller
                     'value'=> $value,
                     'survey_id'=>$newSurvey->id,
                 ]);
-                //print_r($key.' : ' . $value);
             }
         };
 

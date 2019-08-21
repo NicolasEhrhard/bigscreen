@@ -21,7 +21,7 @@ class QuestionSeeder extends Seeder
             'number' => 3,
             'title' => 'Votre sexe',
             'questionType' => 'choice',
-            'choice' => json_encode(['Homme', 'Femme', 'Préfère ne pas répondre']),
+            'choice' => serialize(['Homme', 'Femme', 'Préfère ne pas répondre']),
         ]);
         DB::table('questions')->insert([
             'number' => 4,
@@ -38,19 +38,19 @@ class QuestionSeeder extends Seeder
             'number' => 6,
             'title' => 'Quelle marque de casque VR utilisez-vous ?',
             'questionType' => 'choice',
-            'choice' => json_encode(['Occulus Rift/s', 'HTC Vive', 'Windows Mixed Reality', 'PSVR'])
+            'choice' => serialize(['Occulus Rift/s', 'HTC Vive', 'Windows Mixed Reality', 'PSVR'])
         ]);
         DB::table('questions')->insert([
             'number' => 7,
             'title' => "Sur quelle magasin d'application achetez-vous des contenus VR ?",
             'questionType' => 'choice',
-            'choice' => json_encode(['SteamVR', 'Occulus Store', 'Viveport', 'Playstation VR', 'Google Play', 'Windows Store'])
+            'choice' => serialize(['SteamVR', 'Occulus Store', 'Viveport', 'Playstation VR', 'Google Play', 'Windows Store'])
         ]);
         DB::table('questions')->insert([
             'number' => 8,
             'title' => "Quelle casque envisagez-vous d'acheter dans un futur proche ?",
             'questionType' => 'choice',
-            'choice' => json_encode(['Occulus Quest', 'Occulus Go', 'HTC Vive Pro', 'Autre', 'Aucun'])
+            'choice' => serialize(['Occulus Quest', 'Occulus Go', 'HTC Vive Pro', 'Autre', 'Aucun'])
         ]);
         DB::table('questions')->insert([
             'number' => 9,
@@ -62,7 +62,7 @@ class QuestionSeeder extends Seeder
                 'number' => 10,
                 'title' => "Vous utilisez principalement Bigscreen pour :",
                 'questionType' => 'choice',
-                'choice' => json_encode(['Regarder des émissions TV en direct', 'Regarder des films', 'Jouer en solo', 'Jouer en team'])
+                'choice' => serialize(['Regarder des émissions TV en direct', 'Regarder des films', 'Jouer en solo', 'Jouer en team'])
             ]
         );
         DB::table('questions')->insert([
@@ -99,7 +99,7 @@ class QuestionSeeder extends Seeder
                 'number' => 16,
                 'title' => "Aimeriez-vous avoir des notifications plus précises au cours de vos sessions Biscreen ?",
                 'questionType' => 'choice',
-                'choice' => json_encode(['Oui', 'Non'])
+                'choice' => serialize(['Oui', 'Non'])
             ]
         );
         DB::table('questions')->insert(
@@ -107,7 +107,7 @@ class QuestionSeeder extends Seeder
                 'number' => 17,
                 'title' => "Aimeriez-vous pouvoir inviter un ami à rejoindre votre session via son smartphone ?",
                 'questionType' => 'choice',
-                'choice' => json_encode(['Oui', 'Non'])
+                'choice' => serialize(['Oui', 'Non'])
             ]
         );
         DB::table('questions')->insert(
@@ -115,7 +115,7 @@ class QuestionSeeder extends Seeder
                 'number' => 18,
                 'title' => "Aimeriez-vous pouvoir enregistrer des émissions TV pour pouvoir les regarder ultérieurement ?",
                 'questionType' => 'choice',
-                'choice' => json_encode(['Oui', 'Non'])
+                'choice' => serialize(['Oui', 'Non'])
             ]
         );
         DB::table('questions')->insert(
@@ -123,7 +123,7 @@ class QuestionSeeder extends Seeder
                 'number' => 19,
                 'title' => "Aimeriez-vous jouer à des jeux exclusifs sur votre Bigscreen ?",
                 'questionType' => 'choice',
-                'choice' => json_encode(['Oui', 'Non'])
+                'choice' => serialize(['Oui', 'Non'])
             ]
         );
         DB::table('questions')->insert(

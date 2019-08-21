@@ -1,32 +1,21 @@
 @extends('layouts.app')
 
-<?php
-
-?>
-
 @section('content')
     <div class="container">
 
         @if(Session::has('message'))
-            <div class="alert">
+            <div class="alert alert-danger" role="alert">
                 <p>{{Session::get('message')}}</p>
             </div>
         @endif
 
         @if(Session::has('success'))
-            <div id="modal-close-default" uk-modal>
-                <div class="uk-modal-dialog uk-modal-body">
-                    <button class="uk-modal-close-default" type="button" uk-close></button>
-                    <h2 class="uk-modal-title">MERCI !</h2>
-                    <h4>Ci-dessous le lien vers votre sondage</h4>
-                    <p href="{{Session::get('success')}}" target="_blank">{{Session::get('success')}}</p>
-                </div>
-            </div>
-            <div class="alert">
+            <div class="alert alert-success" role="alert">
+                <p>Merci d'avoir participé a notre sondage!</p>
+                <p>Voici un lien vous permettant de visionner vos différents sondages : <br></p>
                 <p>{{Session::get('success')}}</p>
             </div>
         @endif
-
 
         <div class="row justify-content-center">
             <div class="position-ref full-height">
@@ -44,8 +33,14 @@
                                         <input required name="email" value="{{old('email')}}" type="email"
                                                class="form-control"
                                                id="{{$question->title}}">
+                                    @elseif($question->title == 'Votre âge')
+                                        <input required name="{{$question->id}}" value="{{old($question->title)}}"
+                                               type="number"
+                                               class="form-control"
+                                               id="{{$question->title}}">
                                     @else
-                                        <input required name="{{$question->id}}" value="{{old($question->title)}}" type="text"
+                                        <input required name="{{$question->id}}" value="{{old($question->title)}}"
+                                               type="text"
                                                class="form-control"
                                                id="{{$question->title}}">
                                     @endif
@@ -53,34 +48,31 @@
                                 @endif
                                 @if($question->questionType == 'numeric')
                                     <div required class="uk-form-controls">
-                                        <label><input class="uk-radio" type="radio" name="{{$question->id}}">1</label>
-                                        <label><input class="uk-radio" type="radio" name="{{$question->id}}">2</label>
-                                        <label><input class="uk-radio" type="radio" name="{{$question->id}}">3</label>
-                                        <label><input class="uk-radio" type="radio" name="{{$question->id}}">4</label>
-                                        <label><input class="uk-radio" type="radio" name="{{$question->id}}">5</label>
+                                        <label><input type="radio" value="1" name="{{$question->id}}">1</label>
+                                        <label><input type="radio" value="2" name="{{$question->id}}">2</label>
+                                        <label><input type="radio" value="3" name="{{$question->id}}">3</label>
+                                        <label><input type="radio" value="4" name="{{$question->id}}">4</label>
+                                        <label><input type="radio" value="5" name="{{$question->id}}">5</label>
                                     </div>
                                 @endif
                                 @if($question->questionType == 'choice')
-                                    <div class="uk-form-controls">
-                                        <select required name="{{$question->id}}"
-                                                class="uk-select"
-                                                id="form-stacked-select">
-                                            @foreach($question->getChoices() as $choice)
-                                                <option value="{{$choice}}">{{$choice}}</option>
-                                            @endforeach
-                                        </select>
-                                        @if($question->checkSelectedChoice())
-                                            <h1>AUTrE OKKKKKK</h1>
-                                        @endif
-                                    </div>
+                                    <select required name="{{$question->id}}" class="form-control">
+                                        @foreach($question->getChoices() as $choice)
+                                            <option value="{{$choice}}">{{$choice}}</option>
+                                        @endforeach
+                                    </select>
+                                    @if($question->checkSelectedChoice())
+                                        <h1>AUTrE OKKKKKK</h1>
+                                    @endif
+
                                 @endif
                             </div>
-
+                            <div class="dropdown-divider"></div>
                         @endforeach
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">ENVOYER !</button>
+                                <button type="submit" class="btn btn-dark">ENVOYER !</button>
                             </div>
                         </div>
                     </fieldset>
