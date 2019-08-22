@@ -15,6 +15,9 @@ class Survey extends Model
         return $this->hasMany(Answer::class);
     }
 
-
+    public function scopeGetUser()
+    {
+        return User::find($this->user_id);
+    }
 
 }

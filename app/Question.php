@@ -10,7 +10,6 @@ class Question extends Model
     public function scopeGetChoices()
     {
         return unserialize($this->choice);
-        //return json_decode($this->choice);
     }
 
     public function scopeChoiceChange(){

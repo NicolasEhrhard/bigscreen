@@ -14,7 +14,8 @@ class AnswerController extends Controller
     {
     }
 
-    function generateRandomString($length = 20) {
+    function generateRandomString($length = 20)
+    {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
         $randomString = '';
@@ -30,24 +31,36 @@ class AnswerController extends Controller
         if (!$user) {
             $user = User::create([
                 'email' => $request->email,
-                'name' => explode("@",$request->email)[0],
-                'password' =>  Hash::make(explode("@",$request->email)[0]),
+                'name' => explode("@", $request->email)[0],
+                'password' => Hash::make(explode("@", $request->email)[0]),
                 'lien' => $this->generateRandomString(),
             ]);
         }
-        $newSurvey= new Survey();
-        $newSurvey->name = "Sondage VR";
-        $newSurvey->user_id = $user->id;
-        $user->surveys()->save($newSurvey);
+        $newSurvey = Survey::where('user_id', $user->id)->where('name', 'Sondage VR')->first();
+        if ($newSurvey == null) {
+            $newSurvey = new Survey();
+            $newSurvey->name = "Sondage VR";
+            $newSurvey->user_id = $user->id;
+            $user->surveys()->save($newSurvey);
+        }
 
         foreach ($request->all() as $key => $value) {
-            if ($key == "_token" || $key == "email"){
-            }else{
-                Answer::create([
-                    'question_id'=>$key,
-                    'value'=> $value,
-                    'survey_id'=>$newSurvey->id,
-                ]);
+            if ($key == "_token" || $key == "email") {
+            } else {
+                $existingAnswer = Answer::where('survey_id', $newSurvey->id)->where('question_id', $key)->first();
+                if ($existingAnswer) {
+                    $existingAnswer->update([
+                        'question_id' => $key,
+                        'value' => $value
+                    ]);
+                }
+                else {
+                    Answer::create([
+                        'question_id' => $key,
+                        'value' => $value,
+                        'survey_id' => $newSurvey->id,
+                    ]);
+                }
             }
         };
 
