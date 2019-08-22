@@ -16,7 +16,8 @@ Auth::routes();
 Route::get('/','HomeController@index');
 
 Route::get('/home', 'HomeController@index');
-Route::get('/administration', 'AdminController@index');
+Route::redirect('/administration', '/administration/accueil');
+Route::get('/administration/accueil', 'AdminController@index');
 Route::get('/administration/questionnaires', 'AdminController@questionnaires');
 Route::get('/administration/reponses', 'AdminController@reponses');
 Route::get('/{lien}', 'HomeController@sondages');

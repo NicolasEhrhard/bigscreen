@@ -2,10 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e8a24a1a-0cf7-4a8a-b556-0bf6bc620edd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/css/sb-admin-2.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/chart.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/accueil.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/questionnaires.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/reponses.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/admin.blade.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
@@ -117,16 +120,19 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/css" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/js" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\bigscreen\public\js" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\bigscreen\public\js" />
       <recent name="C:\xampp\htdocs\bigscreen\public\css" />
       <recent name="C:\xampp\htdocs\bigscreen\public" />
-      <recent name="C:\xampp\htdocs\bigscreen\public\js" />
       <recent name="C:\xampp\htdocs\bigscreen\database\migrations" />
       <recent name="C:\xampp\htdocs\bigscreen\resources\css" />
     </key>
@@ -164,7 +170,7 @@
       <workItem from="1566302279451" duration="223000" />
       <workItem from="1566302935148" duration="221000" />
       <workItem from="1566303168828" duration="10952000" />
-      <workItem from="1566375804217" duration="17485000" />
+      <workItem from="1566375804217" duration="21407000" />
     </task>
     <servers />
   </component>
