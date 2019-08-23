@@ -23,7 +23,8 @@ class AdminController extends Controller
         $this->middleware('auth');
     }
 
-    function rand_color() {
+    function rand_color()
+    {
         return '#' . str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT);
     }
 
@@ -51,32 +52,51 @@ class AdminController extends Controller
         return $pc;
     }
 
-    public function radarChart()
+    public function radarChart(int $beginQuestionId,int $endQuestionId)
     {
-        $pc = new Chart();
-        $pc->title = "NUMERIC";
-        array_push($pc->labels, '1');
-        array_push($pc->labels, '2');
-        array_push($pc->labels, '3');
-        array_push($pc->labels, '4');
-        array_push($pc->labels, '5');
-        for ($i = 0; $i <= count($pc->labels); ++$i) {
-            array_push($pc->datas, '0');
-            array_push($pc->colors, $this->rand_color());
+        $rc = new Chart();
+        $rc->title = "NUMERIC";
+        for ($i = 1; $i <= 5; ++$i) {
+            array_push($rc->labels, $i);
+            array_push($rc->datas, '0');
         }
+        array_push($rc->colors, $this->rand_color());
 
-        for ($i = 11; $i <= 15; ++$i) {
-            $question = Question::find($i);
-            $answers = Answer::where('question_id', $question->id)->get();
+        for ($i = $beginQuestionId; $i <= $endQuestionId; ++$i) {
+            $answers = Answer::where('question_id', Question::find($i)->id)->get();
             if ($answers) {
                 foreach ($answers as $answer) {
-                    $key = array_search($answer->value, $pc->labels);
-                    if ($key > -1) $pc->datas[$key]++;
+                    $key = array_search($answer->value, $rc->labels);
+                    if ($key > -1) $rc->datas[$key]++;
                 }
             }
         }
 
-        return $pc;
+        return $rc;
+    }
+
+    public function newRadarChart(int $beginQuestionId,int $endQuestionId)
+    {
+
+        $rc = new Chart();
+        $rc->title = "NUMERIC";
+        for ($i = 1; $i <= 5; ++$i) {
+            array_push($rc->labels, $i);
+            array_push($rc->datas, '0');
+        }
+        array_push($rc->colors, $this->rand_color());
+
+        for ($i = $beginQuestionId; $i <= $endQuestionId; ++$i) {
+            $answers = Answer::where('question_id', Question::find($i)->id)->get();
+            if ($answers) {
+                foreach ($answers as $answer) {
+                    $key = array_search($answer->value, $rc->labels);
+                    if ($key > -1) $rc->datas[$key]++;
+                }
+            }
+        }
+
+        return $rc;
     }
 
     public function index()
@@ -90,7 +110,7 @@ class AdminController extends Controller
         array_push($pcc, $this->pieChart(7));
         array_push($pcc, $this->pieChart(10));
         $rcc = [];
-        array_push($rcc, $this->radarChart());
+        array_push($rcc, $this->radarChart(11,15));
 
         return view('admin/accueil', ['allPieCharts' => $pcc, 'allRadarCharts' => $rcc]);
     }
@@ -100,7 +120,7 @@ class AdminController extends Controller
         if (Auth::user()->role != 'administrateur') {
             return redirect('home')->with('message', "VOUS N'ETES PAS AUTORISE A ACCEDER A L'ADMINISTRATION DE CE SITE !");
         }
-        return view('admin/questionnaires',['questions'=>Question::all()]);
+        return view('admin/questionnaires', ['questions' => Question::all()]);
     }
 
     public function reponses()
@@ -108,7 +128,7 @@ class AdminController extends Controller
         if (Auth::user()->role != 'administrateur') {
             return redirect('home')->with('message', "VOUS N'ETES PAS AUTORISE A ACCEDER A L'ADMINISTRATION DE CE SITE !");
         }
-        return view('admin/reponses',['surveys'=>Survey::all()]);
+        return view('admin/reponses', ['surveys' => Survey::all()]);
     }
 
 }

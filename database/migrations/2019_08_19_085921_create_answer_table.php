@@ -31,12 +31,6 @@ class CreateAnswerTable extends Migration
      */
     public function down()
     {
-        Schema::table('answers', function (Blueprint $table) {
-            $table->dropForeign('answer_question_id_foreign');
-            $table->dropColumn('question_id');
-            $table->dropForeign('answer_user_survey_id_foreign');
-            $table->dropColumn('user_survey_id');
-        });
         Schema::dropIfExists('answers');
     }
 }

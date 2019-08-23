@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Question;
 use App\Survey;
 use App\User;
+use App\UserSurvey;
 
 class HomeController extends Controller
 {
@@ -24,14 +25,14 @@ class HomeController extends Controller
     public function loadQuestions(int $surveyId)
     {
         $questions = Question::where('survey_id',$surveyId)->get();
-        return view('home', ['questions' => $questions]);
+        return view('home', ['questions' => $questions,'surveyId'=>$surveyId]);
     }
 
     public function sondages($lien)
     {
-        $user = User::where('lien',$lien)->with('surveys')->first();
+        $user = User::where('lien',$lien)->with('userSurveys')->first();
         if (!$user) return redirect('home')->with('message', 'ERREUR DE LIEN !');
-        return view('sondage',['surveys'=>$user->surveys]);
+        return view('sondage',['userSurveys'=>$user->userSurveys]);
     }
 
 }

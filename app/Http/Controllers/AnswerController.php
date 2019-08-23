@@ -3,27 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Answer;
-use App\Survey;
 use App\User;
 use App\UserSurvey;
+use Faker\Provider\Uuid;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class AnswerController extends Controller
 {
     public function index()
     {
-    }
-
-    function generateRandomString($length = 20)
-    {
-        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $charactersLength = strlen($characters);
-        $randomString = '';
-        for ($i = 0; $i < $length; $i++) {
-            $randomString .= $characters[rand(0, $charactersLength - 1)];
-        }
-        return $randomString;
     }
 
     public function store(Request $request)
@@ -34,7 +24,7 @@ class AnswerController extends Controller
                 'email' => $request->email,
                 'name' => explode("@", $request->email)[0],
                 'password' => Hash::make(explode("@", $request->email)[0]),
-                'lien' => $this->generateRandomString(),
+                'lien' => Str::uuid()->toString(),
             ]);
         }
 
@@ -47,14 +37,17 @@ class AnswerController extends Controller
         }
 
         foreach ($request->all() as $key => $value) {
-            if ($key == "_token" || $key == "email") {
+            if ($key == "_token" || $key == "email" || $key == "surveyId") {
             } else {
                 $existingAnswer = Answer::where('user_survey_id', $newUserSurvey->id)->where('question_id', $key)->first();
-                $existingAnswer->updateOrCreate([
-                    'question_id' => $key,
-                    'value' => $value,
-                    'survey_id' => $newUserSurvey->id,
-                ]);
+                if ($existingAnswer) $existingAnswer->update(['value' => $value]);
+                else {
+                    Answer::create([
+                        'question_id' => $key,
+                        'value' => $value,
+                        'user_survey_id' => $newUserSurvey->id,
+                    ]);
+                }
             }
         };
 

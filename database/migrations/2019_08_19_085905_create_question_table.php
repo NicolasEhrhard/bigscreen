@@ -32,10 +32,6 @@ class CreateQuestionTable extends Migration
      */
     public function down()
     {
-        Schema::table('questions', function (Blueprint $table) {
-            $table->dropForeign('questions_survey_id_foreign');
-            $table->dropColumn('survey_id');
-        });
         Schema::dropIfExists('questions');
     }
 }

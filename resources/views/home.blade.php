@@ -23,6 +23,8 @@
                     {{csrf_field()}}
                     <fieldset class="uk-fieldset">
 
+                        <input type="number" hidden name="surveyId" value="{{$surveyId}}">
+
                         @foreach($questions as $question)
                             <div class="form-group">
                                 <label for="{{$question->title}}"><strong> Question {{$question->number}}

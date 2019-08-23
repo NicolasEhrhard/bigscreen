@@ -30,12 +30,6 @@ class CreateUserSurveysTable extends Migration
      */
     public function down()
     {
-        Schema::table('user_surveys', function (Blueprint $table) {
-            $table->dropForeign('user_surveys_user_id_foreign');
-            $table->dropColumn('user_id');
-            $table->dropForeign('user_surveys_survey_id_foreign');
-            $table->dropColumn('survey_id');
-        });
         Schema::dropIfExists('user_surveys');
     }
 }
