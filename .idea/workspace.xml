@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e8a24a1a-0cf7-4a8a-b556-0bf6bc620edd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/js/chart.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AnswerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AnswerController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Question.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Question.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Survey.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Survey.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_08_19_085639_create_survey_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_08_19_085639_create_survey_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/chart.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/accueil.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/accueil.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/questionnaires.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/questionnaires.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/reponses.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/reponses.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/sondage.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sondage.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -174,7 +162,7 @@
       <workItem from="1566302279451" duration="223000" />
       <workItem from="1566302935148" duration="221000" />
       <workItem from="1566303168828" duration="10952000" />
-      <workItem from="1566375804217" duration="33269000" />
+      <workItem from="1566375804217" duration="35183000" />
     </task>
     <servers />
   </component>
