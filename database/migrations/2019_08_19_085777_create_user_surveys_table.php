@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateQuestionTable extends Migration
+class CreateUserSurveysTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateQuestionTable extends Migration
      */
     public function up()
     {
-        Schema::create('questions', function (Blueprint $table) {
+        Schema::create('user_surveys', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('number');
-            $table->string('title');
-            $table->enum('questionType', ['choice', 'saisie','numeric'])->default('saisie');
-            $table->string('choice')->nullable();
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedInteger('survey_id')->unsigned();
             $table->foreign('survey_id')->references('id')->on('surveys');
             $table->timestamps();
@@ -32,10 +30,12 @@ class CreateQuestionTable extends Migration
      */
     public function down()
     {
-        Schema::table('questions', function (Blueprint $table) {
-            $table->dropForeign('questions_survey_id_foreign');
+        Schema::table('user_surveys', function (Blueprint $table) {
+            $table->dropForeign('user_surveys_user_id_foreign');
+            $table->dropColumn('user_id');
+            $table->dropForeign('user_surveys_survey_id_foreign');
             $table->dropColumn('survey_id');
         });
-        Schema::dropIfExists('questions');
+        Schema::dropIfExists('user_surveys');
     }
 }

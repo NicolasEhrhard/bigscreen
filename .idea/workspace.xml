@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e8a24a1a-0cf7-4a8a-b556-0bf6bc620edd" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/database/migrations/2019_08_19_085777_create_user_surveys_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeds/SurveySeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_08_19_085639_create_survey_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_08_19_085639_create_survey_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_08_19_085905_create_question_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_08_19_085905_create_question_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_08_19_085921_create_answer_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_08_19_085921_create_answer_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/QuestionSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/QuestionSeeder.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -163,6 +170,7 @@
       <workItem from="1566302935148" duration="221000" />
       <workItem from="1566303168828" duration="10952000" />
       <workItem from="1566375804217" duration="35183000" />
+      <workItem from="1566548338311" duration="1049000" />
     </task>
     <servers />
   </component>
