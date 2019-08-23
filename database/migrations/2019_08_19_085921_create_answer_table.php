@@ -18,8 +18,8 @@ class CreateAnswerTable extends Migration
             $table->string('value');
             $table->unsignedInteger('question_id')->unsigned();
             $table->foreign('question_id')->references('id')->on('questions');
-            $table->unsignedInteger('user_surveys_id')->unsigned();
-            $table->foreign('user_surveys_id')->references('id')->on('user_surveys');
+            $table->unsignedInteger('user_survey_id')->unsigned();
+            $table->foreign('user_survey_id')->references('id')->on('user_surveys');
             $table->timestamps();
         });
     }
@@ -34,8 +34,8 @@ class CreateAnswerTable extends Migration
         Schema::table('answers', function (Blueprint $table) {
             $table->dropForeign('answer_question_id_foreign');
             $table->dropColumn('question_id');
-            $table->dropForeign('answer_user_surveys_id_foreign');
-            $table->dropColumn('user_surveys_id');
+            $table->dropForeign('answer_user_survey_id_foreign');
+            $table->dropColumn('user_survey_id');
         });
         Schema::dropIfExists('answers');
     }

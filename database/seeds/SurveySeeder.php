@@ -8,6 +8,7 @@ class SurveySeeder extends Seeder
     {
         DB::table('surveys')->insert([
             'name' => 'Sondage VR',
+            'created_at' => new DateTime(),
         ]);
     }
 }

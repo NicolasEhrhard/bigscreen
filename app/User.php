@@ -9,6 +9,12 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+
+    public function userSurveys()
+    {
+        return $this->hasMany(UserSurvey::class);
+    }
+
     public function surveys()
     {
         return $this->hasMany(Survey::class);

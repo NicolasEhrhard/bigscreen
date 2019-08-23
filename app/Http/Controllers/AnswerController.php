@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Answer;
 use App\Survey;
 use App\User;
+use App\UserSurvey;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -28,7 +29,7 @@ class AnswerController extends Controller
     public function store(Request $request)
     {
         $user = User::where('email', $request->email)->first();
-        if (!$user) {
+        if ($user == null) {
             $user = User::create([
                 'email' => $request->email,
                 'name' => explode("@", $request->email)[0],
@@ -36,31 +37,24 @@ class AnswerController extends Controller
                 'lien' => $this->generateRandomString(),
             ]);
         }
-        $newSurvey = Survey::where('user_id', $user->id)->where('name', 'Sondage VR')->first();
-        if ($newSurvey == null) {
-            $newSurvey = new Survey();
-            $newSurvey->name = "Sondage VR";
-            $newSurvey->user_id = $user->id;
-            $user->surveys()->save($newSurvey);
+
+        $newUserSurvey = UserSurvey::where('user_id', $user->id)->where('survey_id', $request->surveyId)->first();
+        if ($newUserSurvey == null) {
+            $newUserSurvey = new UserSurvey();
+            $newUserSurvey->user_id = $user->id;
+            $newUserSurvey->survey_id = $request->surveyId;
+            $user->userSurveys()->save($newUserSurvey);
         }
 
         foreach ($request->all() as $key => $value) {
             if ($key == "_token" || $key == "email") {
             } else {
-                $existingAnswer = Answer::where('survey_id', $newSurvey->id)->where('question_id', $key)->first();
-                if ($existingAnswer) {
-                    $existingAnswer->update([
-                        'question_id' => $key,
-                        'value' => $value
-                    ]);
-                }
-                else {
-                    Answer::create([
-                        'question_id' => $key,
-                        'value' => $value,
-                        'survey_id' => $newSurvey->id,
-                    ]);
-                }
+                $existingAnswer = Answer::where('user_survey_id', $newUserSurvey->id)->where('question_id', $key)->first();
+                $existingAnswer->updateOrCreate([
+                    'question_id' => $key,
+                    'value' => $value,
+                    'survey_id' => $newUserSurvey->id,
+                ]);
             }
         };
 

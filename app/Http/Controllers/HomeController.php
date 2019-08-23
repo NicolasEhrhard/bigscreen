@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Answer;
 use App\Question;
 use App\Survey;
 use App\User;
-use Illuminate\Routing\Route;
 
 class HomeController extends Controller
 {
@@ -17,7 +15,15 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $surveys = Survey::all();
+        if (count($surveys) == 1) return $this->loadQuestions($surveys[0]->id);
         $questions = Question::all();
+        return view('home', ['questions' => $questions]);
+    }
+
+    public function loadQuestions(int $surveyId)
+    {
+        $questions = Question::where('survey_id',$surveyId)->get();
         return view('home', ['questions' => $questions]);
     }
 
