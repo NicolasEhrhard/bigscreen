@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Answer extends Model
 {
-    protected $fillable = ['value', 'question_id','user_survey_id'];
+    protected $fillable = ['value', 'question_id','user_survey_id',''];
 
     public function scopeGetQuestion()
     {

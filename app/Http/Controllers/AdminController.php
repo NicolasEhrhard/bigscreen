@@ -42,7 +42,8 @@ class AdminController extends Controller
             array_push($pc->colors, $this->rand_color());
         }
 
-        $answers = Answer::where('question_id', $question->id)->get();
+//        $answers = Answer::where('question_id', $question->id)->get();
+        $answers = $question->answers;
         if ($answers) {
             foreach ($answers as $answer) {
                 $key = array_search($answer->value, $pc->labels);

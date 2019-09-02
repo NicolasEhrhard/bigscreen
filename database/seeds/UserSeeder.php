@@ -14,5 +14,7 @@ class UserSeeder extends Seeder
             'lien' => 'admin',
             'role'=>'administrateur'
         ]);
+
+        factory(App\User::class, 49)->create();
     }
 }

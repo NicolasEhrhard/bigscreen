@@ -2,19 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e8a24a1a-0cf7-4a8a-b556-0bf6bc620edd" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/database/factories/AnswerFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/UserFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeds/AnswerSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeds/UserSurveySeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Answer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Answer.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AnswerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AnswerController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Question.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Question.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Survey.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Survey.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/UserSurvey.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/UserSurvey.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_08_19_085777_create_user_surveys_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_08_19_085777_create_user_surveys_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_08_19_085905_create_question_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_08_19_085905_create_question_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_08_19_085921_create_answer_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_08_19_085921_create_answer_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/UserSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/UserSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/accueil.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/accueil.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/reponses.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/reponses.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/sondage.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sondage.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -176,6 +180,7 @@
       <workItem from="1566303168828" duration="10952000" />
       <workItem from="1566375804217" duration="35183000" />
       <workItem from="1566548338311" duration="9512000" />
+      <workItem from="1567444166524" duration="10820000" />
     </task>
     <servers />
   </component>

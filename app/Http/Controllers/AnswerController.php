@@ -18,6 +18,7 @@ class AnswerController extends Controller
 
     public function store(Request $request)
     {
+        var_dump($request->all());
         $user = User::where('email', $request->email)->first();
         if ($user == null) {
             $user = User::create([

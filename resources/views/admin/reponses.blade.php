@@ -3,37 +3,44 @@
 @section('content')
     <div class="container-fluid">
         @foreach($surveys as $survey)
-            <div class="card shadow mb-4">
 
-                <div class="card-body">
+            @foreach($survey->userSurveys as $userSurvey)
 
-                    <p>{{$survey->name}} de : <strong>{{$survey->getUser()->email}}</strong></p>
-                    <p class="mb-4">Sondage réalisé le : {{$survey->created_at}}</p>
+                <div class="card shadow mb-4">
 
-                    <div class="table-responsive">
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                            <thead>
-                            <tr>
-                                <th>Numéro de la question</th>
-                                <th>Corps de la question</th>
-                                <th>Réponse</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($survey->answers as $answer)
+                    <div class="card-body">
+
+                        <p>{{$survey->name}} de : <strong>{{$userSurvey->getUser()->email}}</strong></p>
+                        <p class="mb-4">Sondage réalisé le : {{$userSurvey->created_at}}</p>
+
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
                                 <tr>
-                                    <td>{{$answer->getQuestion()->number}}</td>
-                                    <td>{{$answer->getQuestion()->title}}</td>
-                                    <td>{{$answer->value}}</td>
+                                    <th>Numéro de la question</th>
+                                    <th>Corps de la question</th>
+                                    <th>Réponse</th>
                                 </tr>
-                            @endforeach
+                                </thead>
+                                <tbody>
+                                @foreach($userSurvey->answers as $answer)
+                                    <tr>
+                                        <td>{{$answer->getQuestion()->number}}</td>
+                                        <td>{{$answer->getQuestion()->title}}</td>
+                                        <td>{{$answer->value}}</td>
+                                    </tr>
+                                @endforeach
 
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
+
+
                 </div>
 
-            </div>
+            @endforeach
+
         @endforeach
     </div>
 @endsection

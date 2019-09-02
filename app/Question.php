@@ -6,18 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Question extends Model
 {
-    protected $lastChoiceSelected = '';
     public function scopeGetChoices()
     {
         return unserialize($this->choice);
     }
 
-    public function scopeChoiceChange(){
-        print_r('$this');
-        $this->lastChoiceSelected = '';
+    public function answers()
+    {
+        return $this->hasMany(Answer::class);
     }
 
-    public function scopeCheckSelectedChoice(){
-        return $this->lastChoiceSelected == 'Autre';
-    }
 }

@@ -58,15 +58,22 @@
                                     </div>
                                 @endif
                                 @if($question->questionType == 'choice')
-                                    <select required name="{{$question->id}}" class="form-control">
+                                    <select required name="{{$question->id}}" id="{{$question->id}}"
+                                            onchange="checkValue({{$question->id}})" class="form-control">
                                         @foreach($question->getChoices() as $choice)
                                             <option value="{{$choice}}">{{$choice}}</option>
                                         @endforeach
                                     </select>
-                                    @if($question->checkSelectedChoice())
-                                        <h1>AUTrE OKKKKKK</h1>
-                                    @endif
-
+                                    <script>
+                                        function checkValue(id) {
+                                            if (document.getElementById(id).value == 'Autre') {
+                                                document.getElementById("dede" + id).style.display = 'block';
+                                                document.getElementById("dede" + id).tagName = id;
+                                                document.getElementById(id).tagName = "";
+                                            }
+                                        }
+                                    </script>
+                                    <textarea  class="form-control" style="display: none" id="dede{{$question->id}}" value="{{$choice}}"></textarea>
                                 @endif
                             </div>
                             <div class="dropdown-divider"></div>

@@ -8,16 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Survey extends Model
 {
-    protected $fillable = ['name', 'user_id'];
+    protected $fillable = ['name','id'];
 
-    public function answers()
+    public function userSurveys()
     {
-        return $this->hasMany(Answer::class);
+        return $this->hasMany(UserSurvey::class);
     }
 
-    public function scopeGetUser()
+    public function scopeGetUserSurveys()
     {
-        return User::find($this->user_id);
+        return UserSurvey::where('survey_id',$this->id);
     }
 
 }
