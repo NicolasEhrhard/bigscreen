@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class AnswerSeeder extends Seeder
@@ -9,14 +10,13 @@ class AnswerSeeder extends Seeder
         foreach (range(1, 50) as $usid) {
 
             foreach (range(2, 20) as $i) {
-                $val = "";
                 switch ($i) {
                     case 2:
                         $val = random_int(5, 99);
                         DB::table('answers')->insert([
                             'question_id' => $i,
                             'user_survey_id' => $usid,
-                            'value' => $val
+                            'value' => $val,'created_at' => Carbon::now()
                         ]);
                         break;
                     case 3:
@@ -24,7 +24,7 @@ class AnswerSeeder extends Seeder
                         DB::table('answers')->insert([
                             'question_id' => $i,
                             'user_survey_id' => $usid,
-                            'value' => $val
+                            'value' => $val,'created_at' => Carbon::now()
                         ]);
                         break;
                     case 4:
@@ -32,7 +32,7 @@ class AnswerSeeder extends Seeder
                         DB::table('answers')->insert([
                             'question_id' => $i,
                             'user_survey_id' => $usid,
-                            'value' => $val
+                            'value' => $val,'created_at' => Carbon::now()
                         ]);
                         break;
                     case 5:
@@ -40,7 +40,7 @@ class AnswerSeeder extends Seeder
                         DB::table('answers')->insert([
                             'question_id' => $i,
                             'user_survey_id' => $usid,
-                            'value' => $val
+                            'value' => $val,'created_at' => Carbon::now()
                         ]);
                         break;
                     case 6:
@@ -50,7 +50,7 @@ class AnswerSeeder extends Seeder
                         DB::table('answers')->insert([
                             'question_id' => $i,
                             'user_survey_id' => $usid,
-                            'value' => $val
+                            'value' => $val,'created_at' => Carbon::now()
                         ]);
                         break;
                     case 7:
@@ -60,7 +60,7 @@ class AnswerSeeder extends Seeder
                         DB::table('answers')->insert([
                             'question_id' => $i,
                             'user_survey_id' => $usid,
-                            'value' => $val
+                            'value' => $val,'created_at' => Carbon::now()
                         ]);
                         break;
                     case 8:
@@ -70,7 +70,7 @@ class AnswerSeeder extends Seeder
                         DB::table('answers')->insert([
                             'question_id' => $i,
                             'user_survey_id' => $usid,
-                            'value' => $val
+                            'value' => $val,'created_at' => Carbon::now()
                         ]);
                         break;
                     case 9:
@@ -78,7 +78,7 @@ class AnswerSeeder extends Seeder
                         DB::table('answers')->insert([
                             'question_id' => $i,
                             'user_survey_id' => $usid,
-                            'value' => $val
+                            'value' => $val,'created_at' => Carbon::now()
                         ]);
                         break;
                     case 10:
@@ -88,7 +88,7 @@ class AnswerSeeder extends Seeder
                         DB::table('answers')->insert([
                             'question_id' => $i,
                             'user_survey_id' => $usid,
-                            'value' => $val
+                            'value' => $val,'created_at' => Carbon::now()
                         ]);
                         break;
                     case 11:
@@ -96,7 +96,7 @@ class AnswerSeeder extends Seeder
                         DB::table('answers')->insert([
                             'question_id' => $i,
                             'user_survey_id' => $usid,
-                            'value' => $val
+                            'value' => $val,'created_at' => Carbon::now()
                         ]);
                         break;
                     case 12:
@@ -104,7 +104,7 @@ class AnswerSeeder extends Seeder
                         DB::table('answers')->insert([
                             'question_id' => $i,
                             'user_survey_id' => $usid,
-                            'value' => $val
+                            'value' => $val,'created_at' => Carbon::now()
                         ]);
                         break;
                     case 13:
@@ -112,7 +112,7 @@ class AnswerSeeder extends Seeder
                         DB::table('answers')->insert([
                             'question_id' => $i,
                             'user_survey_id' => $usid,
-                            'value' => $val
+                            'value' => $val,'created_at' => Carbon::now()
                         ]);
                         break;
                     case 14:
@@ -120,7 +120,7 @@ class AnswerSeeder extends Seeder
                         DB::table('answers')->insert([
                             'question_id' => $i,
                             'user_survey_id' => $usid,
-                            'value' => $val
+                            'value' => $val,'created_at' => Carbon::now()
                         ]);
                         break;
                     case 15:
@@ -128,7 +128,7 @@ class AnswerSeeder extends Seeder
                         DB::table('answers')->insert([
                             'question_id' => $i,
                             'user_survey_id' => $usid,
-                            'value' => $val
+                            'value' => $val,'created_at' => Carbon::now()
                         ]);
                         break;
                     case 16:
@@ -138,7 +138,7 @@ class AnswerSeeder extends Seeder
                         DB::table('answers')->insert([
                             'question_id' => $i,
                             'user_survey_id' => $usid,
-                            'value' => $val
+                            'value' => $val,'created_at' => Carbon::now()
                         ]);
                         break;
                     case 17:
@@ -148,7 +148,7 @@ class AnswerSeeder extends Seeder
                         DB::table('answers')->insert([
                             'question_id' => $i,
                             'user_survey_id' => $usid,
-                            'value' => $val
+                            'value' => $val,'created_at' => Carbon::now()
                         ]);
                         break;
                     case 18:
@@ -158,7 +158,7 @@ class AnswerSeeder extends Seeder
                         DB::table('answers')->insert([
                             'question_id' => $i,
                             'user_survey_id' => $usid,
-                            'value' => $val
+                            'value' => $val,'created_at' => Carbon::now()
                         ]);
                         break;
                     case 19:
@@ -168,7 +168,7 @@ class AnswerSeeder extends Seeder
                         DB::table('answers')->insert([
                             'question_id' => $i,
                             'user_survey_id' => $usid,
-                            'value' => $val
+                            'value' => $val,'created_at' => Carbon::now()
                         ]);
                         break;
                     case 12:
@@ -176,7 +176,7 @@ class AnswerSeeder extends Seeder
                         DB::table('answers')->insert([
                             'question_id' => $i,
                             'user_survey_id' => $usid,
-                            'value' => $val
+                            'value' => $val,'created_at' => Carbon::now()
                         ]);
                         break;
                 }

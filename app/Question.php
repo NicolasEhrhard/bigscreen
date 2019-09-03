@@ -11,6 +11,11 @@ class Question extends Model
         return unserialize($this->choice);
     }
 
+    public function scopeGetSurvey()
+    {
+        return Survey::find($this->survey_id);
+    }
+
     public function answers()
     {
         return $this->hasMany(Answer::class);

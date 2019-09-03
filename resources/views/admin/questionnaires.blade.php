@@ -11,6 +11,7 @@
                             <th>Numéro de la question</th>
                             <th>Corps de la question</th>
                             <th>Type de la question</th>
+                            <th>Nom du sondage</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -19,6 +20,7 @@
                                 <td>{{$question->number}}</td>
                                 <td>{{$question->title}}</td>
                                 <td>{{$question->questionType}}</td>
+                                <td>{{$question->getSurvey()->name}}</td>
                             </tr>
                         @endforeach
 

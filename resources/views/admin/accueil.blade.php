@@ -43,42 +43,42 @@
                         </script>
                     @endforeach
 
-                        @foreach($allRadarCharts as $radarChart)
-                            <div class="col-xl-6 col-lg-12">
-                                <div class="card shadow mb-4">
-                                    <!-- Card Header - Dropdown -->
-                                    <div class="card-header py-3">
-                                        <h6 class="m-0 font-weight-bold text-primary">{{$radarChart->title}}</h6>
-                                    </div>
-                                    <!-- Card Body -->
-                                    <div class="card-body">
-                                        <div class="chart-pie pt-6">
-                                            <canvas id="{{$radarChart->id}}"></canvas>
-                                        </div>
+                    @foreach($allRadarCharts as $radarChart)
+                        <div class="col-xl-6 col-lg-12">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">{{$radarChart->title}}</h6>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-pie pt-6">
+                                        <canvas id="{{$radarChart->id}}"></canvas>
                                     </div>
                                 </div>
                             </div>
-                            <script>
-                                new Chart(document.getElementById({{$radarChart->id}}), {
-                                    type: 'radar',
-                                    data: {
-                                        labels: @json($radarChart->labels),
-                                        datasets: [{
-                                            label: @json($radarChart->labels),
-                                            data: @json($radarChart->datas),
-                                            backgroundColor: @json($radarChart->colors),
-                                        }],
-                                    },
-                                    options: {
-                                        scale: {
-                                            ticks: {
-                                                beginAtZero: true,
-                                            },
-                                        }
+                        </div>
+                        <script>
+                            new Chart(document.getElementById({{$radarChart->id}}), {
+                                type: 'radar',
+                                data: {
+                                    labels: @json($radarChart->labels),
+                                    datasets: [{
+                                        label: @json($radarChart->labels),
+                                        data: @json($radarChart->datas),
+                                        backgroundColor: @json($radarChart->colors),
+                                    }],
+                                },
+                                options: {
+                                    scale: {
+                                        ticks: {
+                                            beginAtZero: true,
+                                        },
                                     }
-                                });
-                            </script>
-                        @endforeach
+                                }
+                            });
+                        </script>
+                    @endforeach
 
                 </div>
 

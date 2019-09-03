@@ -17,10 +17,24 @@
                     <div id="collapseOne" class="collapse" aria-labelledby="headingThree"
                          data-parent="#accordionExample">
                         <div class="card-body">
-                            @foreach($userSurvey->answers as $answer)
-                                <h1>{{$answer->getQuestion()->title}}</h1>
-                                <h3>{{$answer->value}}</h3>
-                            @endforeach
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                <tr>
+                                    <th>Corps de la question</th>
+                                    <th>Réponse</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($userSurvey->answers as $answer)
+                                    <tr>
+                                        <td>{{$answer->getQuestion()->title}}</td>
+                                        <td>{{$answer->value}}</td>
+                                    </tr>
+                                @endforeach
+
+                                </tbody>
+                            </table>
+
                         </div>
                     </div>
                 </div>

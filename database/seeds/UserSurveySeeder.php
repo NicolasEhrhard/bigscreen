@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class UserSurveySeeder extends Seeder
@@ -10,6 +11,7 @@ class UserSurveySeeder extends Seeder
             DB::table('user_surveys')->insert([
                 'user_id' => $i,
                 'survey_id' => 1,
+                'created_at' => Carbon::now()
             ]);
         }
 

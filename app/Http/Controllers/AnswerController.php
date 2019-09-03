@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Answer;
 use App\User;
 use App\UserSurvey;
-use Faker\Provider\Uuid;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -18,7 +17,10 @@ class AnswerController extends Controller
 
     public function store(Request $request)
     {
-        var_dump($request->all());
+        $this->validate($request, [
+            'email' => 'required|email',
+        ]);
+
         $user = User::where('email', $request->email)->first();
         if ($user == null) {
             $user = User::create([
