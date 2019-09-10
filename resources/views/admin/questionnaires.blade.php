@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('argon/layouts.app')
 
 @section('content')
     <div class="container-fluid">
