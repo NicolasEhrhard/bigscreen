@@ -11,15 +11,16 @@
 
         @if(Session::has('success'))
             <div class="alert alert-success" role="alert">
-                <p>Merci d'avoir participé a notre sondage!</p>
-                <p>Voici un lien vous permettant de visionner vos différents sondages : <br></p>
-                <p>{{Session::get('success')}}</p>
+                <p>Toute l’équipe de ​ Bigscreen ​ vous remercie pour votre engagement.<br>
+                    Grâce à votre investissement, nous vous préparons une application toujours plus facile à utiliser, seul ou en famille.<br>
+                    Si vous désirez consulter vos réponse ultérieurement, vous pouvez consultez cette adresse : <br>
+                    http://localhost:8000/sondages/{{Session::get('success')}}</p>
             </div>
         @endif
 
         <div class="row justify-content-center">
             <div class="position-ref full-height">
-                <form action="{{ action('AnswerController@store') }}" method="post">
+                <form action="{{ action('HomeController@store') }}" method="post">
                     {{csrf_field()}}
                     <fieldset class="uk-fieldset">
 
@@ -27,8 +28,9 @@
 
                         @foreach($questions as $question)
                             <div class="form-group">
-                                <label for="{{$question->title}}"><strong> Question {{$question->number}}
-                                        /{{$questions->count()}} </strong>
+                                <label for="{{$question->title}}">
+                                    <strong> Question </strong> <span class="badge badge-secondary"> {{$question->number}}
+                                        /{{$questions->count()}} </span>
                                     <br>{{$question->title}}</label>
                                 @if($question->questionType == 'saisie')
                                     @if($question->title == 'Votre adresse mail')
@@ -49,18 +51,38 @@
 
                                 @endif
                                 @if($question->questionType == 'numeric')
-                                    <div required class="uk-form-controls">
-                                        <label><input type="radio" value="1" name="{{$question->id}}">1</label>
-                                        <label><input type="radio" value="2" name="{{$question->id}}">2</label>
-                                        <label><input type="radio" value="3" name="{{$question->id}}">3</label>
-                                        <label><input type="radio" value="4" name="{{$question->id}}">4</label>
-                                        <label><input type="radio" value="5" name="{{$question->id}}">5</label>
+                                    <div class="form-group">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" required name="{{$question->id}}" type="radio"
+                                                   id="inlineCheckbox1" value="1">
+                                            <label class="form-check-label" for="inlineCheckbox1">1</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" name="{{$question->id}}" type="radio"
+                                                   id="inlineCheckbox1" value="2">
+                                            <label class="form-check-label" for="inlineCheckbox1">2</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" name="{{$question->id}}" type="radio"
+                                                   id="inlineCheckbox1" value="3">
+                                            <label class="form-check-label" for="inlineCheckbox1">3</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" name="{{$question->id}}" type="radio"
+                                                   id="inlineCheckbox1" value="4">
+                                            <label class="form-check-label" for="inlineCheckbox1">4</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" name="{{$question->id}}" type="radio"
+                                                   id="inlineCheckbox1" value="5">
+                                            <label class="form-check-label" for="inlineCheckbox1">5</label>
+                                        </div>
                                     </div>
                                 @endif
                                 @if($question->questionType == 'choice')
                                     <select required name="{{$question->id}}" id="{{$question->id}}"
                                             onchange="checkValue({{$question->id}})" class="form-control">
-                                        @foreach($question->getChoices() as $choice)
+                                        @foreach(unserialize($question->choice) as $choice)
                                             <option value="{{$choice}}">{{$choice}}</option>
                                         @endforeach
                                     </select>
@@ -73,7 +95,9 @@
                                             }
                                         }
                                     </script>
-                                    <textarea  class="form-control" style="display: none" id="dede{{$question->id}}" value="{{$choice}}"></textarea>
+
+                                    <textarea class="form-control" style="display: none" id="dede{{$question->id}}"
+                                              value="{{$choice}}"></textarea>
                                 @endif
                             </div>
                             <div class="dropdown-divider"></div>

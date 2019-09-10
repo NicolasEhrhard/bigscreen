@@ -10,8 +10,13 @@ class Answer extends Model
 {
     protected $fillable = ['value', 'question_id','user_survey_id',''];
 
-    public function scopeGetQuestion()
+    public function scopeGetQuestionTitle()
     {
-        return Question::find($this->question_id);
+        return Question::find($this->question_id)->title;
+    }
+
+    public function scopeGetQuestionNumber()
+    {
+        return Question::find($this->question_id)->number;
     }
 }

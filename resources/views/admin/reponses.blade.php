@@ -2,11 +2,26 @@
 
 @section('content')
     <div class="container-fluid">
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <a class="btn btn-primary" style="color:white" onclick="goTo()" role="button">Rechercher</a>
+            </div>
+            <input type="email" id="searchByEMail" class="form-control" placeholder="Veuillez entrer une adresse email">
+        </div>
+        <script>
+            function goTo() {
+                if (document.getElementById("searchByEMail").value) {
+                    document.location = "#" + document.getElementById("searchByEMail").value
+                }
+            }
+        </script>
+
         @foreach($surveys as $survey)
 
             @foreach($survey->userSurveys as $userSurvey)
 
-                <div class="card shadow mb-4">
+                <div class="card shadow mb-4" id="{{$userSurvey->getUser()->email}}">
 
                     <div class="card-body">
 
@@ -25,8 +40,8 @@
                                 <tbody>
                                 @foreach($userSurvey->answers as $answer)
                                     <tr>
-                                        <td>{{$answer->getQuestion()->number}}</td>
-                                        <td>{{$answer->getQuestion()->title}}</td>
+                                        <td>{{$answer->getQuestionNumber()}}</td>
+                                        <td>{{$answer->getQuestionTitle()}}</td>
                                         <td>{{$answer->value}}</td>
                                     </tr>
                                 @endforeach
@@ -35,7 +50,6 @@
                             </table>
                         </div>
                     </div>
-
 
                 </div>
 

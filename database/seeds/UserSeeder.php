@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class UserSeeder extends Seeder
 {
@@ -11,7 +12,7 @@ class UserSeeder extends Seeder
             'name' => 'admin',
             'email' => 'admin@bigscreen.fr',
             'password' => Hash::make('admin'),
-            'lien' => 'admin',
+            'lien' => Str::uuid()->toString(),
             'role'=>'administrateur'
         ]);
 

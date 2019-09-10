@@ -12,12 +12,9 @@ class Survey extends Model
 
     public function userSurveys()
     {
-        return $this->hasMany(UserSurvey::class);
+        return $this->hasMany(UserSurvey::class)->orderByDesc('created_at');;
     }
 
-    public function scopeGetUserSurveys()
-    {
-        return UserSurvey::where('survey_id',$this->id);
-    }
+
 
 }

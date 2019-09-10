@@ -6,11 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Question extends Model
 {
-    public function scopeGetChoices()
-    {
-        return unserialize($this->choice);
-    }
-
     public function scopeGetSurvey()
     {
         return Survey::find($this->survey_id);

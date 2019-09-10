@@ -16,14 +16,14 @@ Auth::routes();
 Route::get('/','HomeController@index');
 
 Route::get('/home', 'HomeController@index');
-Route::redirect('/administration', '/administration/accueil');
+Route::get('/sondages/{lien}', 'HomeController@sondages');
+
+Route::redirect('/administration','/administration/accueil');
 Route::get('/administration/accueil', 'AdminController@index');
 Route::get('/administration/questionnaires', 'AdminController@questionnaires');
 Route::get('/administration/reponses', 'AdminController@reponses');
-Route::get('/{lien}', 'HomeController@sondages');
 
-
-Route::post('answerStore', 'AnswerController@store');
+Route::post('homeStore', 'HomeController@store');
 
 
 

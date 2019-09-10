@@ -3,6 +3,8 @@
 @section('content')
     <div class="container">
 
+        <h4>Vous trouverez ci-dessous les réponses que vous avez apportés à notre sondage :</h4>
+
         <div class="accordion" id="accordionExample">
             @foreach($userSurveys as $userSurvey)
                 <div class="card">
@@ -27,7 +29,7 @@
                                 <tbody>
                                 @foreach($userSurvey->answers as $answer)
                                     <tr>
-                                        <td>{{$answer->getQuestion()->title}}</td>
+                                        <td>{{$answer->getQuestionTitle()}}</td>
                                         <td>{{$answer->value}}</td>
                                     </tr>
                                 @endforeach

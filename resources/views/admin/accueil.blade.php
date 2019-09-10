@@ -30,7 +30,7 @@
                         </div>
                         <script>
 
-                            new Chart(document.getElementById({{$pieChart->id}}), {
+                           var myPieChart = new Chart(document.getElementById({{$pieChart->id}}), {
                                 type: 'pie',
                                 data: {
                                     labels: @json($pieChart->labels),
@@ -38,6 +38,15 @@
                                         data: @json($pieChart->datas),
                                         backgroundColor: @json($pieChart->colors),
                                     }],
+                                },
+                                options: {
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    plugins:{
+                                        labels: {
+                                            render: 'value',
+                                        }
+                                    }
                                 },
                             });
                         </script>
@@ -70,11 +79,13 @@
                                     }],
                                 },
                                 options: {
+                                    responsive: true,
+                                    maintainAspectRatio: false,
                                     scale: {
                                         ticks: {
                                             beginAtZero: true,
                                         },
-                                    }
+                                    },
                                 }
                             });
                         </script>

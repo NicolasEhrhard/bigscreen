@@ -42,7 +42,6 @@ class AdminController extends Controller
             array_push($pc->colors, $this->rand_color());
         }
 
-//        $answers = Answer::where('question_id', $question->id)->get();
         $answers = $question->answers;
         if ($answers) {
             foreach ($answers as $answer) {
@@ -56,31 +55,7 @@ class AdminController extends Controller
     public function radarChart(int $beginQuestionId,int $endQuestionId)
     {
         $rc = new Chart();
-        $rc->title = "NUMERIC";
-        for ($i = 1; $i <= 5; ++$i) {
-            array_push($rc->labels, $i);
-            array_push($rc->datas, '0');
-        }
-        array_push($rc->colors, $this->rand_color());
-
-        for ($i = $beginQuestionId; $i <= $endQuestionId; ++$i) {
-            $answers = Answer::where('question_id', Question::find($i)->id)->get();
-            if ($answers) {
-                foreach ($answers as $answer) {
-                    $key = array_search($answer->value, $rc->labels);
-                    if ($key > -1) $rc->datas[$key]++;
-                }
-            }
-        }
-
-        return $rc;
-    }
-
-    public function newRadarChart(int $beginQuestionId,int $endQuestionId)
-    {
-
-        $rc = new Chart();
-        $rc->title = "NUMERIC";
+        $rc->title = "Questions 11 à 15";
         for ($i = 1; $i <= 5; ++$i) {
             array_push($rc->labels, $i);
             array_push($rc->datas, '0');
@@ -131,5 +106,4 @@ class AdminController extends Controller
         }
         return view('admin/reponses', ['surveys' => Survey::all()]);
     }
-
 }

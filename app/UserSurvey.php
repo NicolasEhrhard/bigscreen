@@ -15,7 +15,6 @@ class UserSurvey extends Model
         return User::find($this->user_id);
     }
 
-    //A VERIFIER SI UTILISE
     public function scopeGetSurvey()
     {
         return Survey::find($this->survey_id);
