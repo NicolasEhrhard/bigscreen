@@ -1,3 +1,21 @@
 .card{
     margin: 1rem;
 }
+
+#app{
+    background: transparent;
+}
+body{
+    background: linear-gradient(45deg,#13225c 0,rgba(29,185,241,.59) 100%);
+    min-height: 100vh;
+}
+.btn-dark{
+    margin-bottom: 10px;
+}
+
+.nico-card {
+    margin-bottom: 0 !important;
+}
+.container-fluid{
+    padding-bottom: 15px;
+}

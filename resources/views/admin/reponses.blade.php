@@ -21,7 +21,7 @@
 
             @foreach($survey->userSurveys as $userSurvey)
 
-                <div class="card shadow mb-4" id="{{$userSurvey->getUser()->email}}">
+                <div class="card nico-card shadow mb-4" id="{{$userSurvey->getUser()->email}}">
 
                     <div class="card-body">
 

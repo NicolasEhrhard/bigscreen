@@ -20,7 +20,7 @@
     <link href="{{ asset('/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet">
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
     <link type="text/css" href="{{ asset('/css/argon.css?v=1.0.0')}}" rel="stylesheet">
-
+    <link rel="stylesheet" href="{{asset('css/custom.css')}}">
 </head>
 <body>
 
@@ -35,7 +35,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <!-- Brand -->
-        <a class="navbar-brand pt-0" href="">
+        <a class="navbar-brand pt-0" href="{{ url('/') }}">
             <img class="navbar-brand-img" alt="..." src="{{asset('bigscreen_logo_blue.png')}}">
         </a>
         <!-- User -->
@@ -64,7 +64,7 @@
             <div class="navbar-collapse-header d-md-none">
                 <div class="row">
                     <div class="col-6 collapse-brand">
-                        <a href="">
+                        <a href="{{ url('/') }}">
                             <img src="{{asset('bigscreen_logo_blue.png')}}">
                         </a>
                     </div>

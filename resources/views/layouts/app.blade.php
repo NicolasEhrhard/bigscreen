@@ -20,7 +20,7 @@
 
 <div id="app">
 
-    <nav class="navbar navbar-expand-md navbar-light bg-dark">
+    <nav class="navbar navbar-expand-md navbar-light">
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -30,7 +30,7 @@
         </div>
     </nav>
 
-    <main class="container" style="margin-bottom: 10px;margin-top: 10px;">
+    <main class="container">
         @yield('content')
     </main>
 
