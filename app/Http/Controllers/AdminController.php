@@ -25,7 +25,11 @@ class AdminController extends Controller
 
     function rand_color()
     {
-        return '#' . str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT);
+        $color = '#' . str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT);
+        $color = substr($color, 1);
+        $hex = array($color[0] . $color[1], $color[2] . $color[3], $color[4] . $color[5]);
+        $rgb = array_map('hexdec', $hex);
+        return 'rgba(' . implode(",", $rgb) . ',' . 0.5 . ')';
     }
 
     public function pieChart(int $questionId): Chart
@@ -49,10 +53,11 @@ class AdminController extends Controller
                 if ($key > -1) $pc->datas[$key]++;
             }
         }
+
         return $pc;
     }
 
-    public function radarChart(int $beginQuestionId,int $endQuestionId)
+    public function radarChart(int $beginQuestionId, int $endQuestionId)
     {
         $rc = new Chart();
         $rc->title = "Questions 11 à 15";
@@ -86,7 +91,7 @@ class AdminController extends Controller
         array_push($pcc, $this->pieChart(7));
         array_push($pcc, $this->pieChart(10));
         $rcc = [];
-        array_push($rcc, $this->radarChart(11,15));
+        array_push($rcc, $this->radarChart(11, 15));
 
         return view('admin/accueil', ['allPieCharts' => $pcc, 'allRadarCharts' => $rcc]);
     }

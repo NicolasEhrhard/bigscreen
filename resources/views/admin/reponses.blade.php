@@ -1,4 +1,4 @@
-@extends('argon/layouts.app')
+@extends('layouts.admin')
 
 @section('content')
     <div class="container-fluid">
@@ -25,7 +25,7 @@
 
                     <div class="card-body">
 
-                        <p>{{$survey->name}} de : <strong>{{$userSurvey->getUser()->email}}</strong></p>
+                        <p>{{$survey->name}} de : <span class="badge badge-secondary"> {{$userSurvey->getUser()->email}}</span> </p>
                         <p class="mb-4">Sondage réalisé le : {{$userSurvey->created_at}}</p>
 
                         <div class="table-responsive">
