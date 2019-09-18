@@ -45,7 +45,7 @@
                    aria-expanded="false">
                     <div class="media align-items-center">
                         <span class="avatar avatar-sm rounded-circle">
-                        <img alt="Image placeholder" src="https://api.adorable.io/avatars/47/abott@adorable.png">
+                        <img alt="Image placeholder" src="{{asset('stevejobs.jpg')}}">
                         </span>
                     </div>
                 </a>
@@ -126,7 +126,7 @@
                        aria-expanded="false">
                         <div class="media align-items-center">
                         <span class="avatar avatar-sm rounded-circle">
-                            <img alt="Image placeholder" src="https://api.adorable.io/avatars/47/abott@adorable.png">
+                            <img alt="Image placeholder" src="{{asset('stevejobs.jpg')}}">
                         </span>
                             <div class="media-body ml-2 d-none d-lg-block">
                                 <span class="mb-0 text-sm  font-weight-bold">{{ auth()->user()->name }}</span>

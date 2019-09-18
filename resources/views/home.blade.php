@@ -9,6 +9,16 @@
             </div>
         @endif
 
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
         @if(Session::has('success'))
             <div class="alert alert-success" role="alert">
                 <p>Toute l’équipe de ​ Bigscreen ​ vous remercie pour votre engagement.<br>
@@ -46,13 +56,13 @@
                                                        id="{{$question->title}}">
                                             @elseif($question->title == 'Votre âge')
                                                 <input required name="{{$question->id}}"
-                                                       value="{{old($question->title)}}"
+                                                       value="{{old($question->id)}}"
                                                        type="number"
                                                        class="form-control"
                                                        id="{{$question->title}}">
                                             @else
                                                 <input required name="{{$question->id}}"
-                                                       value="{{old($question->title)}}"
+                                                       value="{{old($question->id)}}"
                                                        type="text"
                                                        class="form-control"
                                                        id="{{$question->title}}">
@@ -63,31 +73,31 @@
                                             <div class="form-group">
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" required name="{{$question->id}}"
-                                                           type="radio"
+                                                           type="radio" {{ (old("$question->id") == 1 ? "checked":"") }}
                                                            id="inlineCheckbox1" value="1">
                                                     <label class="form-check-label" for="inlineCheckbox1">1</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" name="{{$question->id}}"
-                                                           type="radio"
+                                                           type="radio" {{ (old("$question->id") == 2 ? "checked":"") }}
                                                            id="inlineCheckbox1" value="2">
                                                     <label class="form-check-label" for="inlineCheckbox1">2</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" name="{{$question->id}}"
-                                                           type="radio"
+                                                           type="radio" {{ (old("$question->id") == 3 ? "checked":"") }}
                                                            id="inlineCheckbox1" value="3">
                                                     <label class="form-check-label" for="inlineCheckbox1">3</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" name="{{$question->id}}"
-                                                           type="radio"
+                                                           type="radio" {{ (old("$question->id") == 4 ? "checked":"") }}
                                                            id="inlineCheckbox1" value="4">
                                                     <label class="form-check-label" for="inlineCheckbox1">4</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" name="{{$question->id}}"
-                                                           type="radio"
+                                                           type="radio" {{ (old("$question->id") == 5 ? "checked":"") }}
                                                            id="inlineCheckbox1" value="5">
                                                     <label class="form-check-label" for="inlineCheckbox1">5</label>
                                                 </div>
@@ -97,7 +107,7 @@
                                             <select required name="{{$question->id}}" id="{{$question->id}}"
                                                     onchange="checkValue({{$question->id}})" class="form-control">
                                                 @foreach(unserialize($question->choice) as $choice)
-                                                    <option value="{{$choice}}">{{$choice}}</option>
+                                                    <option {{ (old("$question->id") == $choice ? "selected":"") }} value="{{$choice}}">{{$choice}}</option>
                                                 @endforeach
                                             </select>
                                             <script>

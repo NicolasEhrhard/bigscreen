@@ -42,7 +42,7 @@ class HomeController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'email' => 'required|email',
+            'email' => 'required|email|regex:/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,6}/i',
         ]);
 
         $user = User::where('email', $request->email)->first();

@@ -21,6 +21,7 @@
                         </div>
                     </div>
                 </div>
+
                 <script>
 
                     var myPieChart = new Chart(document.getElementById({{$pieChart->id}}), {
